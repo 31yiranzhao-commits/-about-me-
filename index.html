@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiran's Personal Website | Arsenal Champion Edition</title>
+    <style>
+        /* CSS THEME & STYLING (Arsenal & Minimalist) */
+        :root {
+            --arsenal-red: #DB0007;
+            --arsenal-dark: #063672;
+            --arsenal-gold: #4C3600;
+            --light-bg: #f4f4f4;
+            --white: #ffffff;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 4. Navigation Bar */
+        nav {
+            background-color: var(--arsenal-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--arsenal-dark);
+        }
+
+        /* 5. Header */
+        header {
+            background: linear-gradient(135deg, var(--arsenal-red) 60%, var(--arsenal-dark));
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 5px solid #FFD700; /* Gold Accent for the Champions! */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--arsenal-red);
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .champion-banner {
+            background-color: #FFF9E6;
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* 3. Slider Gallery Menu */
+        .slider-container {
+            position: relative;
+            max-width: 1000px;
+            height: 300px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: var(--arsenal-dark);
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 1.5rem;
+            padding: 40px;
+        }
+
+        .slide h3 {
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 3px;
+        }
+
+        .slider-btn:hover { background-color: var(--arsenal-red); }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* 1. Playing Game (Arsenal Gunner Clicker) */
+        .game-box {
+            background: #eee;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        #game-target {
+            width: 50px;
+            height: 50px;
+            background: var(--arsenal-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            user-select: none;
+            border: 2px solid #FFD700;
+        }
+
+        /* 2. Write Note / Chat Box */
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #chat-output {
+            height: 150px;
+            border: 1px solid #ccc;
+            background: #fafafa;
+            padding: 10px;
+            overflow-y: auto;
+            border-radius: 5px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: var(--arsenal-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover { background-color: var(--arsenal-dark); }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--arsenal-dark);
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#gallery">My World Slider</a></li>
+            <li><a href="#game">Play Game</a></li>
+            <li><a href="#chat">Leave a Note</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Welcome to Yiran's Space</h1>
+        <p>Grade 7 Student | STEM Project Developer | Arsenal Fan</p>
+    </header>
+
+    <div class="container">
+
+        <div class="champion-banner">
+            <h2>🏆 ARSENAL ARE THE CHAMPIONS! 🏆</h2>
+            <p>What an incredible win today! The Gunners have taken the trophy, and this website is celebrating in full Red, White, and Gold style!</p>
+        </div>
+
+        <section id="about">
+            <h2>About Me & My Accomplishments</h2>
+            <p>Hi, I am <strong>Yiran</strong>, a Grade 7 student. Currently, I am exploring the world of coding and web development in my <strong>STEM Project</strong> class, learning how to leverage AI tools to bring ideas to life!</p>
+            
+            <br>
+            <h3>🌟 Accomplishments</h3>
+            <p>Successfully designed and deployed this interactive web platform using HTML, CSS, and JavaScript with the assistance of AI technology.</p>
+            
+            <br>
+            <h3>👨‍👩‍👦 My Family</h3>
+            <p>My family is incredibly supportive of my learning journey, always cheering me on whether I am coding for my STEM class or cheering for Arsenal!</p>
+        </section>
+
+        <section id="gallery">
+            <h2>My Interests, Hobbies, & Favorites</h2>
+            <p style="margin-bottom: 15px;">Click through the slider below to learn more about what I love:</p>
+            
+            <div class="slider-container">
+                <div class="slide" style="display: flex;">
+                    <h3>🎨 My Hobby</h3>
+                    <p>Exploring tech, building modern STEM projects, and practicing web development layouts.</p>
+                </div>
+                <div class="slide">
+                    <h3>🚀 My Interests</h3>
+                    <p>Artificial Intelligence, futuristic software engineering, and watching tactical football matches.</p>
+                </div>
+                <div class="slide">
+                    <h3>⭐ Favorite Things</h3>
+                    <p>Arsenal Football Club, coding cleanly, solving tricky logic puzzles, and celebrating big match-day wins!</p>
+                </div>
+                
+                <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
+
+        <section id="game">
+            <h2>Play Game: Arsenal Target Striker</h2>
+            <p style="margin-bottom: 10px;">The Gunners won today—now it's your turn! Click the moving football target as many times as you can. Score points!</p>
+            <div style="font-weight: bold; margin-bottom: 10px;">Score: <span id="score-val">0</span></div>
+            <div class="game-box" id="game-box">
+                <div id="game-target" onclick="scorePoint()">⚽</div>
+            </div>
+        </section>
+
+        <section id="chat">
+            <h2>Leave a Note / Live Chat</h2>
+            <p style="margin-bottom: 10px;">Type a message to congratulate Arsenal, say hi to me, or give feedback on my STEM project!</p>
+            <div class="chat-box">
+                <div id="chat-output">
+                    <p style="color: #888;">[System: Welcome to Yiran's guestbook! Type a note below.]</p>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type your note here...">
+                    <button class="btn" onclick="sendNote()">Send</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Yiran's STEM Project. Made with AI. COYG (Come On You Gunners)!</p>
+    </footer>
+
+    <script>
+        // --- 3. Slider Functionality ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            if (index >= slides.length) currentSlide = 0;
+            else if (index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+
+            slides.forEach((slide) => slide.style.display = 'none');
+            slides[currentSlide].style.display = 'flex';
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+
+        // --- 1. Game Functionality (Click the Ball) ---
+        let score = 0;
+        const target = document.getElementById('game-target');
+        const box = document.getElementById('game-box');
+        const scoreVal = document.getElementById('score-val');
+
+        function scorePoint() {
+            score++;
+            scoreVal.innerText = score;
+            moveTarget();
+        }
+
+        function moveTarget() {
+            // Calculate random positions inside the game boundary box
+            const maxX = box.clientWidth - target.clientWidth;
+            const maxY = box.clientHeight - target.clientHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            target.style.left = randomX + 'px';
+            target.style.top = randomY + 'px';
+        }
+        // Move target for the first time on load
+        moveTarget();
+
+
+        // --- 2. Write Note / Chat Functionality ---
+        const chatInput = document.getElementById('chat-input');
+        const chatOutput = document.getElementById('chat-output');
+
+        function sendNote() {
+            const text = chatInput.value.trim();
+            if (text !== "") {
+                const newNote = document.createElement('p');
+                newNote.innerHTML = `<strong>Guest:</strong> ${text}`;
+                chatOutput.appendChild(newNote);
+                chatInput.value = ""; // Clear input
+                chatOutput.scrollTop = chatOutput.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        // Allow pressing "Enter" key to send note
+        chatInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                sendNote();
+            }
+        });
+    </script>
+</body>
+</html>
